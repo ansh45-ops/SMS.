@@ -1492,3 +1492,13 @@ def support_handler(message):
         f"📢 https://t.me/yt15t5t"))
 
 bot.infinity_polling(timeout=60, long_polling_timeout=60)
+
+from fastapi import FastAPI, Request
+# ... your bot imports ...
+
+app = FastAPI()  # <-- This is the required variable
+
+@app.post("/api/webhook") # Adjust path if needed
+async def telegram_webhook(request: Request):
+    # ... your logic to process the update ...
+    return {"ok": True}
